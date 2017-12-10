@@ -35,7 +35,7 @@ class Home extends Component {
             className="pl-4 pr-4 pt-2 pb-2 mb-3 btn-block"
             onClick={this.props.getCurrentPosition}
           >
-            Report an encampment
+            Start
           </Button>
         </Row>
         <Row className="mt-1">
