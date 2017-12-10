@@ -1,44 +1,59 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
 import { Navbar, NavbarBrand, Container, Row, Col, Button } from 'reactstrap';
 import Question from './Question';
+import Home from './Home';
 
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      questions: [
-        {
-          id: 0,
-          text: 'Can we use your location?',
-          answers: ['Yes', 'No'],
-          answer: null
-        },
-        {
-          id: 1,
-          text: 'What time is it?',
-          answers: ['Hello', 'Goodbye'],
-          answer: null
-        }
-      ],
-      index: 0
+      fields: {
+        lat: null,
+        lng: null,
+        sid: null
+      },
+      isEmergency: null
     }
   }
 
-  selectAnswer(answer) {
-    // make API call
-
-    // update relevant question's answer property in state
-
-    this.setState(state => {
-      return {
-        index: state.index + 1
-      }
+  setFields(position) {
+    this.setState({
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
     })
   }
 
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition(this.setFields.bind(this));
+  }
+
+  componentDidUpdate() {
+    console.log('state', this.state)
+  }
+
+  setEmergency() {
+    this.setState({
+      isEmergency: false
+    })
+  }
+
+
   render() {
+
+    let display = [];
+    if (this.state.isEmergency === null) {
+      display.push(
+        <Home setEmergency={this.setEmergency.bind(this)} key="Home" />
+      )
+    }
+
+    if (this.state.isEmergency === false) {
+      display.push(
+        <Question setFields={this.setFields.bind(this)} key="Question" />
+      )
+    }
+
     return (
       <div className="text-dark">
         <Navbar color="light">
@@ -46,10 +61,7 @@ class App extends Component {
             Beyond 311
           </NavbarBrand>
         </Navbar>
-        <Question
-          question={this.state.questions[this.state.index]}
-          selectAnswer={this.selectAnswer.bind(this)}
-        />
+        {display}
       </div>
     );
   }

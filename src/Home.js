@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { Navbar, NavbarBrand, Container, Row, Col, Button } from 'reactstrap';
 
-class Question extends Component {
+class Home extends Component {
 
   render() {
     return (
@@ -10,7 +10,7 @@ class Question extends Component {
         <Row className="mt-5 pt-5">
           <Col>
             <h3>
-              Can we use your location?
+              If this is an emergency, call 9-1-1.
             </h3>
           </Col>
         </Row>
@@ -19,8 +19,9 @@ class Question extends Component {
             size="lg"
             color="primary"
             className="pl-4 pr-4 pt-2 pb-2 mb-3 badge-pill btn-block"
+            onClick={this.props.setEmergency}
           >
-            Use my location
+            This is not an emergency
           </Button>
         </Row>
       </Container>
@@ -28,4 +29,4 @@ class Question extends Component {
   }
 }
 
-export default Question;
+export default Home;
