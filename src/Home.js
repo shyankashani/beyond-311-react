@@ -16,26 +16,19 @@ class Home extends Component {
         </Row>
         <Row className="mt-2 pt-2">
           <Col>
-            <h3>
-              A concerned neighbor's reporting system.
-            </h3>
+            <h4>
+              Help homeless neighbors find a place to belong.
+            </h4>
           </Col>
         </Row>
-        <Row>
+        <Row className="mt-1" style={{"color": "#757575"}}>
           <Col>
             <div>
-              Use this form to alert local non-profit volunteers about homeless encampments in your area.
+              Inform outreach workers about people in need.
             </div>
           </Col>
         </Row>
         <Row className="mt-5 pt-5">
-          <Col>
-            <div>
-              If this is an emergency, please call 911.
-            </div>
-          </Col>
-        </Row>
-        <Row className="pt-5 pb-5">
           <Button
             outline
             style={{"border": "1px solid #F57C00", "color" : "#F57C00", "background-color" : "rgba(245, 124, 0, 0.1)"}}
@@ -44,6 +37,13 @@ class Home extends Component {
           >
             Report an encampment
           </Button>
+        </Row>
+        <Row className="mt-1">
+          <Col>
+            <div style={{"font-weight" : "100", "color" : "#F57C00", "font-size" : "14px"}}>
+              If this is an emergency, call 911.
+            </div>
+          </Col>
         </Row>
       </Container>
     );
