@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import shortid from 'shortid';
 import { Navbar, NavbarBrand, Container, Row, Col, Button } from 'reactstrap';
 import Question from './Question';
 import Home from './Home';
@@ -17,40 +18,36 @@ class App extends Component {
     }
   }
 
-  setFields(position) {
+  updateState(position) {
     this.setState({
-      lat: position.coords.latitude,
-      lng: position.coords.longitude
+      fields: {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+        sid: shortid.generate()
+      },
+      isEmergency: false
     })
-  }
-
-  componentDidMount() {
-    navigator.geolocation.getCurrentPosition(this.setFields.bind(this));
   }
 
   componentDidUpdate() {
     console.log('state', this.state)
   }
 
-  setEmergency() {
-    this.setState({
-      isEmergency: false
-    })
+  getCurrentPosition() {
+    navigator.geolocation.getCurrentPosition(this.updateState.bind(this));
   }
 
-
   render() {
-
     let display = [];
     if (this.state.isEmergency === null) {
       display.push(
-        <Home setEmergency={this.setEmergency.bind(this)} key="Home" />
+        <Home getCurrentPosition={this.getCurrentPosition.bind(this)} key="Home" />
       )
     }
 
     if (this.state.isEmergency === false) {
       display.push(
-        <Question setFields={this.setFields.bind(this)} key="Question" />
+        <Question fields={this.state.fields} key="Question" />
       )
     }
 

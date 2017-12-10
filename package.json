@@ -8,7 +8,8 @@
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",
-    "reactstrap": "next"
+    "reactstrap": "next",
+    "shortid": "^2.2.8"
   },
   "scripts": {
     "start": "react-scripts start",

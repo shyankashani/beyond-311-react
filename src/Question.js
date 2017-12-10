@@ -15,13 +15,18 @@ class Question extends Component {
           </Col>
         </Row>
         <Row className="mt-5 pt-5 pb-5">
-          <Button
-            size="lg"
-            color="primary"
-            className="pl-4 pr-4 pt-2 pb-2 mb-3 badge-pill btn-block"
+          <a
+            className="btn-block"
+            href={`https://sossf.typeform.com/to/KQHeTt?lat=${this.props.fields.lat}&lng=${this.props.fields.lng}&sid=${this.props.fields.sid}`}
           >
-            Use my location
-          </Button>
+            <Button
+              size="lg"
+              color="primary"
+              className="pl-4 pr-4 pt-2 pb-2 mb-3 badge-pill btn-block"
+            >
+              Use my location
+            </Button>
+          </a>
         </Row>
       </Container>
     );
