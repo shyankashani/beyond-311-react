@@ -52,12 +52,7 @@ class App extends Component {
     }
 
     return (
-      <div className="text-dark">
-        <Navbar color="light">
-          <NavbarBrand className="text-primary">
-            Beyond 311
-          </NavbarBrand>
-        </Navbar>
+      <div>
         {display}
       </div>
     );
